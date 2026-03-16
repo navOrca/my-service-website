@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网络定制服务 | 专业网络解决方案</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .service-card {
+            padding: 30px;
+            border-radius: 12px;
+            background: #f8f9fa;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .service-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        .contact {
+            background: #f8f9fa;
+            padding: 60px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        .contact h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .contact p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+        footer {
+            background: #333;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>网络定制服务</h1>
+        <p>专业、高效、定制化的网络解决方案</p>
+    </header>
+
+    <div class="container">
+        <h2 style="text-align: center; font-size: 2rem;">我们的服务</h2>
+        <div class="services">
+            <div class="service-card">
+                <h3>🌐 网站开发</h3>
+                <p>定制化网站开发，包括企业官网、电商平台、个人博客等。我们根据您的需求，打造独特的在线形象。</p>
+            </div>
+            <div class="service-card">
+                <h3>🛠️ 系统定制</h3>
+                <p>根据企业需求定制管理系统、CRM、ERP 等软件解决方案，提升工作效率，降低运营成本。</p>
+            </div>
+            <div class="service-card">
+                <h3>☁️ 云服务部署</h3>
+                <p>专业的云服务器部署和运维服务，确保您的应用稳定、安全、高效运行。</p>
+            </div>
+            <div class="service-card">
+                <h3>📱 小程序开发</h3>
+                <p>微信小程序、支付宝小程序等移动端应用开发，让您的业务触达更多用户。</p>
+            </div>
+            <div class="service-card">
+                <h3>🔧 API 开发</h3>
+                <p>RESTful API 设计与开发，实现系统间的高效数据交互和集成。</p>
+            </div>
+            <div class="service-card">
+                <h3>💾 数据服务</h3>
+                <p>数据采集、处理、分析与可视化，帮助您从数据中发现商业价值。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact">
+        <h2>联系我们</h2>
+        <p>准备好开始您的项目了吗？</p>
+        <p style="margin-top: 20px; font-size: 1.3rem; color: #667eea;">📧 example@email.com</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 网络定制服务. All rights reserved.</p>
+    </footer>
+</body>
+</html>
