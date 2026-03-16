@@ -10,119 +10,391 @@
             padding: 0;
             box-sizing: border-box;
         }
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f3460;
+            --highlight: #e94560;
+            --text: #333;
+            --text-light: #666;
+            --white: #fff;
+        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
+            line-height: 1.8;
+            color: var(--text);
+            background: #f5f5f5;
         }
+        
+        /* Header */
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 60px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            color: var(--white);
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        header .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
             text-align: center;
         }
         header h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
+            font-weight: 700;
             margin-bottom: 20px;
+            letter-spacing: -1px;
         }
         header p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
         }
+        .tagline {
+            display: inline-block;
+            background: rgba(255,255,255,0.1);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: var(--highlight);
+        }
+
+        /* Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 80px 20px;
         }
-        .services {
+
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        .section-title p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .section-title .line {
+            width: 60px;
+            height: 4px;
+            background: var(--highlight);
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Services */
+        .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
-            margin-top: 40px;
         }
         .service-card {
-            padding: 30px;
+            background: var(--white);
+            padding: 40px;
             border-radius: 12px;
-            background: #f8f9fa;
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s;
+            border: 1px solid #eee;
         }
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
         }
         .service-card h3 {
-            color: #667eea;
+            font-size: 1.4rem;
+            color: var(--primary);
             margin-bottom: 15px;
-            font-size: 1.5rem;
         }
-        .contact {
-            background: #f8f9fa;
-            padding: 60px 20px;
+        .service-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--white);
+            padding: 80px 20px;
+        }
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .stat-item {
             text-align: center;
-            margin-top: 60px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--highlight);
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        .about-image {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: rgba(255,255,255,0.2);
+        }
+
+        /* Contact */
+        .contact {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            padding: 80px 20px;
+            text-align: center;
         }
         .contact h2 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 20px;
         }
         .contact p {
+            opacity: 0.9;
             font-size: 1.1rem;
-            color: #666;
+            margin-bottom: 30px;
         }
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+        .contact-item span {
+            opacity: 0.8;
+        }
+
+        /* Footer */
         footer {
-            background: #333;
-            color: white;
+            background: var(--primary);
+            color: rgba(255,255,255,0.7);
             padding: 30px 20px;
             text-align: center;
         }
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2rem;
+            }
+            nav ul {
+                display: none;
+            }
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            .stats {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
+    <nav>
+        <div class="nav-content">
+            <div class="logo">网络定制服务</div>
+            <ul>
+                <li><a href="#services">服务</a></li>
+                <li><a href="#about">关于</a></li>
+                <li><a href="#contact">联系</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <header>
-        <h1>网络定制服务</h1>
-        <p>专业、高效、定制化的网络解决方案</p>
+        <div class="content">
+            <div class="tagline">专业 · 高效 · 定制</div>
+            <h1>网络定制服务</h1>
+            <p>为您提供专业的网络解决方案，助力企业数字化转型</p>
+        </div>
     </header>
 
-    <div class="container">
-        <h2 style="text-align: center; font-size: 2rem;">我们的服务</h2>
-        <div class="services">
+    <section id="services" class="container">
+        <div class="section-title">
+            <h2>我们的服务</h2>
+            <p>全方位满足您的网络需求<br>致力于为您打造最优质的解决方案</p>
+            <div class="line"></div>
+        </div>
+        <div class="services-grid">
             <div class="service-card">
-                <h3>🌐 网站开发</h3>
-                <p>定制化网站开发，包括企业官网、电商平台、个人博客等。我们根据您的需求，打造独特的在线形象。</p>
+                <div class="service-icon">🌐</div>
+                <h3>网站开发</h3>
+                <p>企业官网、电商平台、个人博客等定制开发，打造独特的在线品牌形象。</p>
             </div>
             <div class="service-card">
-                <h3>🛠️ 系统定制</h3>
-                <p>根据企业需求定制管理系统、CRM、ERP 等软件解决方案，提升工作效率，降低运营成本。</p>
+                <div class="service-icon">🛠</div>
+                <h3>系统定制</h3>
+                <p>CRM、ERP、OA等企业管理系统的定制开发，提升工作效率。</p>
             </div>
             <div class="service-card">
-                <h3>☁️ 云服务部署</h3>
-                <p>专业的云服务器部署和运维服务，确保您的应用稳定、安全、高效运行。</p>
+                <div class="service-icon">☁</div>
+                <h3>云服务部署</h3>
+                <p>云服务器搭建、运维与优化，确保系统安全稳定运行。</p>
             </div>
             <div class="service-card">
-                <h3>📱 小程序开发</h3>
-                <p>微信小程序、支付宝小程序等移动端应用开发，让您的业务触达更多用户。</p>
+                <div class="service-icon">📱</div>
+                <h3>小程序开发</h3>
+                <p>微信、支付宝小程序开发，让业务触达更多用户。</p>
             </div>
             <div class="service-card">
-                <h3>🔧 API 开发</h3>
-                <p>RESTful API 设计与开发，实现系统间的高效数据交互和集成。</p>
+                <div class="service-icon">🔧</div>
+                <h3>API 开发</h3>
+                <p>RESTful API 设计与开发，实现系统间高效数据交互。</p>
             </div>
             <div class="service-card">
-                <h3>💾 数据服务</h3>
-                <p>数据采集、处理、分析与可视化，帮助您从数据中发现商业价值。</p>
+                <div class="service-icon">💾</div>
+                <h3>数据服务</h3>
+                <p>数据采集、处理、分析与可视化，发现商业价值。</p>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="contact">
+    <section id="about" class="about">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>关于 我们</h2>
+                <p>我们是一家专注于网络定制服务的科技公司，拥有多年行业经验，为众多企业提供过优质的技术解决方案。</p>
+                <p>我们始终坚持以客户需求为导向，用专业技术创造价值，期待与您的合作。</p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">服务客户</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">完成项目</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">年经验</div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                💼
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
         <h2>联系我们</h2>
-        <p>准备好开始您的项目了吗？</p>
-        <p style="margin-top: 20px; font-size: 1.3rem; color: #667eea;">📧 example@email.com</p>
-    </div>
+        <p>准备好开始您的项目了吗？我们随时为您提供专业咨询</p>
+        <div class="contact-info">
+            <div class="contact-item">
+                <span>📧</span>
+                <span>example@email.com</span>
+            </div>
+            <div class="contact-item">
+                <span>📱</span>
+                <span>138-0000-0000</span>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <p>&copy; 2026 网络定制服务. All rights reserved.</p>
