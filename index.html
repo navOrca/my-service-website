@@ -11,10 +11,10 @@
             box-sizing: border-box;
         }
         :root {
-            --primary: #1a1a2e;
-            --secondary: #16213e;
-            --accent: #0f3460;
-            --highlight: #e94560;
+            --primary: #0a0a1a;
+            --secondary: #1a1a2e;
+            --accent: #16213e;
+            --highlight: #00d4ff;
             --text: #333;
             --text-light: #666;
             --white: #fff;
@@ -26,11 +26,15 @@
             background: #f5f5f5;
         }
         
-        /* Header */
+        /* Header with Background */
         header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            background: linear-gradient(135deg, rgba(10, 10, 26, 0.95) 0%, rgba(26, 26, 46, 0.9) 100%),
+                        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: var(--white);
-            padding: 80px 20px;
+            padding: 120px 20px;
             position: relative;
             overflow: hidden;
         }
@@ -41,8 +45,17 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
+            background: radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 40%);
+        }
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300d4ff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
         header .content {
             max-width: 1200px;
@@ -56,6 +69,10 @@
             font-weight: 700;
             margin-bottom: 20px;
             letter-spacing: -1px;
+            background: linear-gradient(135deg, #fff 0%, #00d4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         header p {
             font-size: 1.3rem;
@@ -65,18 +82,20 @@
         }
         .tagline {
             display: inline-block;
-            background: rgba(255,255,255,0.1);
+            background: rgba(0, 212, 255, 0.15);
             padding: 8px 20px;
             border-radius: 30px;
             font-size: 0.9rem;
             margin-bottom: 20px;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            color: #00d4ff;
         }
 
         /* Navigation */
         nav {
-            background: var(--white);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            background: rgba(10, 10, 26, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -92,7 +111,10 @@
         nav .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--primary);
+            background: linear-gradient(135deg, #fff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         nav ul {
             display: flex;
@@ -101,12 +123,12 @@
         }
         nav a {
             text-decoration: none;
-            color: var(--text);
+            color: rgba(255,255,255,0.8);
             font-weight: 500;
-            transition: color 0.3s;
+            transition: all 0.3s;
         }
         nav a:hover {
-            color: var(--highlight);
+            color: #00d4ff;
         }
 
         /* Container */
@@ -135,7 +157,7 @@
         .section-title .line {
             width: 60px;
             height: 4px;
-            background: var(--highlight);
+            background: linear-gradient(90deg, #00d4ff, #0099cc);
             margin: 20px auto 0;
             border-radius: 2px;
         }
@@ -153,15 +175,31 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.06);
             transition: all 0.3s;
             border: 1px solid #eee;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00d4ff, #0099cc);
+            transform: scaleX(0);
+            transition: transform 0.3s;
         }
         .service-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 12px 40px rgba(0,0,0,0.12);
         }
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
         .service-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, #0a0a1a, #16213e);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -181,7 +219,7 @@
 
         /* About Section */
         .about {
-            background: var(--white);
+            background: linear-gradient(180deg, #f8f9fa 0%, #fff 100%);
             padding: 80px 20px;
         }
         .about-content {
@@ -210,40 +248,79 @@
         }
         .stat-item {
             text-align: center;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 8px;
+            padding: 25px 15px;
+            background: linear-gradient(135deg, #0a0a1a, #16213e);
+            border-radius: 12px;
+            color: #fff;
         }
         .stat-number {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 700;
-            color: var(--highlight);
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-light);
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            margin-top: 5px;
         }
         .about-image {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, #0a0a1a 0%, #16213e 100%),
+                        url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80');
+            background-size: cover;
+            background-position: center;
             border-radius: 12px;
-            height: 400px;
+            height: 450px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 5rem;
-            color: rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .about-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0,212,255,0.1), transparent);
         }
 
         /* Contact */
         .contact {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #16213e 100%),
+                        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: var(--white);
-            padding: 80px 20px;
+            padding: 100px 20px;
             text-align: center;
+            position: relative;
+        }
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 10, 26, 0.85);
+        }
+        .contact > * {
+            position: relative;
+            z-index: 1;
         }
         .contact h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .contact p {
             opacity: 0.9;
@@ -253,23 +330,28 @@
         .contact-info {
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: 50px;
             flex-wrap: wrap;
         }
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             font-size: 1.1rem;
+            padding: 15px 25px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(0,212,255,0.2);
         }
-        .contact-item span {
-            opacity: 0.8;
+        .contact-item:hover {
+            background: rgba(0,212,255,0.15);
+            border-color: rgba(0,212,255,0.4);
         }
 
         /* Footer */
         footer {
-            background: var(--primary);
-            color: rgba(255,255,255,0.7);
+            background: #0a0a1a;
+            color: rgba(255,255,255,0.6);
             padding: 30px 20px;
             text-align: center;
         }
@@ -290,6 +372,10 @@
             }
             .stats {
                 grid-template-columns: 1fr;
+            }
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
@@ -337,19 +423,19 @@
                 <p>云服务器搭建、运维与优化，确保系统安全稳定运行。</p>
             </div>
             <div class="service-card">
-                <div class="service-icon">📱</div>
-                <h3>小程序开发</h3>
-                <p>微信、支付宝小程序开发，让业务触达更多用户。</p>
+                <div class="service-icon">📡</div>
+                <h3>网络通讯</h3>
+                <p>企业网络架构、VPN 专线、卫星通讯解决方案。</p>
             </div>
             <div class="service-card">
-                <div class="service-icon">🔧</div>
-                <h3>API 开发</h3>
-                <p>RESTful API 设计与开发，实现系统间高效数据交互。</p>
+                <div class="service-icon">🔒</div>
+                <h3>网络安全</h3>
+                <p>防火墙配置、数据加密、安全审计等服务。</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">💾</div>
                 <h3>数据服务</h3>
-                <p>数据采集、处理、分析与可视化，发现商业价值。</p>
+                <p>数据采集、处理，分析与可视化，发现商业价值。</p>
             </div>
         </div>
     </section>
@@ -376,7 +462,6 @@
                 </div>
             </div>
             <div class="about-image">
-                💼
             </div>
         </div>
     </section>
@@ -392,6 +477,10 @@
             <div class="contact-item">
                 <span>📱</span>
                 <span>138-0000-0000</span>
+            </div>
+            <div class="contact-item">
+                <span>🌐</span>
+                <span>www.yourdomain.com</span>
             </div>
         </div>
     </section>
